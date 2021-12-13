@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "Ashxatuma ba vor miamit chashhxati pdi asenq Karlenin";
 });
