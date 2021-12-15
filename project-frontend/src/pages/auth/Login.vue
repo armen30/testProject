@@ -2,9 +2,11 @@
   <div>
     <b-container>
       <b-row>
-        <b-col cols="8">
+        <b-col cols="12">
+          <h1>Vacebook</h1>
           <input type="text" v-model="form.email">
           <input type="text" v-model="form.password">
+
           <b-button @click="sendToBack" class="btn btn-success">Log In</b-button>
         </b-col>
       </b-row>
@@ -26,26 +28,15 @@ export default {
   },
   methods: {
     sendToBack() {
-      // return new Promise((resolve, reject) => {
-      //     axios.post('/auth/login', this.form)
-      //           .then((result) => {
-      //             console.log(result)
-      //           })
-      //           .catch(error => {
-      //             console.log(error)
-      //           })
-      // })
       return new Promise((resolve, reject) => {
-        axios.get('/test/data')
-          .then((result) => {
-            console.log(result)
-          })
-          .catch(error => {
-            console.log(error)
-          })
+          axios.post('/auth/login', this.form)
+                .then((result) => {
+                  localStorage.setItem('access_token',result.data.access_token)
+                })
+                .catch(error => {
+                  console.log(error)
+                })
       })
-
-
     }
   }
 }
